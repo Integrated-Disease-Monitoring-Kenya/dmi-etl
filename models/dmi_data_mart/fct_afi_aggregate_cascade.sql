@@ -90,7 +90,7 @@ sampled as (
 ),
 
 -- UNION ALL then aggregate = faster than multiple FULL JOINs
-stacked as (
+stacked_all as (
     select gender_key, age_group_key, epi_week_key, facility_key, date_key,
            screened, eligible, 0::bigint as enrolled, 0::bigint as eligible_for_sampling, 0::bigint as sampled
     from screened_eligible
@@ -123,6 +123,6 @@ select
     sum(eligible_for_sampling) as eligible_for_sampling,
     sum(sampled) as sampled,
     cast(current_date as date) as load_date
-from stacked
+from stacked_all
 group by 1,2,3,4,5
 
