@@ -12,7 +12,7 @@
 SELECT "Unique_ID",
   "source",
        pid,
-        screening_interviewdate::DATE as screening_date ,
+      {{ parse_mixed_ddmmyyyy('screening_interviewdate', 'date') }} as screening_date,
        ROUND(screeningpoint:: NUMERIC) :: INT as screeningpoint,
 
 CASE
@@ -23,11 +23,9 @@ CASE
 END AS eligible,
     
          ROUND(gender:: numeric)::INT as gender,
-            case
-	when consent = '<NA>' then 99
-	-- Replace '<NA>' with 99
-	else consent::INT
-end as consent,
+
+           {{ parse_consent('consent') }} as consent,
+
           non_enr_reason,
            ROUND(exactfeverdays::numeric) :: INT as exactfeverdays,
                enr_interviewdate::DATE as enr_interviewdate,
