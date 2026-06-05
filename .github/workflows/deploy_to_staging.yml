@@ -27,8 +27,9 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          pip uninstall dbt-fusion
           pip install dbt-postgres==1.10.0
-          pip install psycopg
+          pip install dbt-core psycopg
           dbt deps --profiles-dir ./profiles/ --target test
       - name: Run dbt seeds for test
         run: |
