@@ -132,3 +132,5 @@ dmypy.json
 .legacy
 dbt_packages/
 logs/
+
+.github/copilot-instructions.md
