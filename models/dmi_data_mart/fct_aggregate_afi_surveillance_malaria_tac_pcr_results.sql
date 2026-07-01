@@ -5,6 +5,7 @@ WITH malaria_tac_pcr_results AS (
      tac_mm.gender,
      tac_mm.calculated_age_days,
      tac_mm.enr_interviewdate,
+     tac_mm.screening_date,
        CASE WHEN tac_mm."TacResult" = 'Positive' THEN 1 
           WHEN tac_mm."TacResult" = 'Negative' THEN 2 
           ELSE NULL END AS tac_result,
@@ -23,6 +24,7 @@ SELECT
   COALESCE(result_tac.lab_result_key, 'unset') AS tac_result_key,
   COALESCE(result_tac_malaria.lab_result_key, 'unset') AS tac_malaria_result_key,
   COALESCE(date.date_key, 'unset') AS date_key,
+  screening_date,
   enrolled AS enrolled,
   PID,
   current_date AS load_date

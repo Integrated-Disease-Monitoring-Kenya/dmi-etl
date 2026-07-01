@@ -9,6 +9,7 @@ date.month,
 tac_result.lab_result as tac_result,
 tac_malaria_result.lab_result as tac_malaria_result,
 malaria_tac_pcr_results.enrolled,
+malaria_tac_pcr_results.screening_date,
 cast(current_date as date) as load_date
 FROM 
 {{ ref('fct_aggregate_afi_surveillance_malaria_tac_pcr_results') }} as malaria_tac_pcr_results

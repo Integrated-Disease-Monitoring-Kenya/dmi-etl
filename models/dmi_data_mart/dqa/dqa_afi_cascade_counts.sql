@@ -5,10 +5,7 @@ with raw_counts as (
 
     select
         count(distinct "Unique_ID") as screened,
-
-      
-
-          count(distinct case 
+        count(distinct case 
     when eligible = '1' 
      and not (eligible = '1' and consent = '6')
     then "Unique_ID"
