@@ -13,12 +13,16 @@ with subset_data as (
 
         /* 0/1 flags (cast to int so sum() is clean) */
         (case when "Unique_ID" is not null then 1 else 0 end)::int as screened,
-        (case when eligible = 1 and consent <> 6 then 1 else 0 end)::int as eligible,
+        (case when eligible = 1  and not (eligible = 1 and consent = 6) then 1 else 0 end)::int as eligible,
         (case when consent = 1 then 1 else 0 end)::int as enrolled,
-        (case when consent = 1 and proposed_combined_case <> 'DNS' then 1 else 0 end)::int as eligible_sampling,
+        (case when consent = 1 and proposed_combined_case <> 'DNS'  or sampled = 1 then 1 else 0 end)::int as eligible_sampling,
         (case when consent = 1 and sampled = 1 then 1 else 0 end)::int as sampled,
         (case when eligible = 1 and consent = 2 then 1 else 0 end)::int as declined_enrollment
 
+
+
+
+       
     from {{ ref('stg_afi_surveillance') }}
 
 )

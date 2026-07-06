@@ -5,6 +5,7 @@ WITH malaria_microscopy_results AS (
      mm.gender,
      mm.calculated_age_days,
      mm.enr_interviewdate,
+     mm.screening_date,
      CASE WHEN mm."Final_Result" = '1' THEN 1 
           WHEN mm."Final_Result" = '2' THEN 2 
           ELSE NULL END AS final_result,
@@ -26,6 +27,7 @@ SELECT
   COALESCE(read2result.lab_result_key, 'unset') AS lab_read2_result_key,
   enrolled AS enrolled,
   PID,
+  screening_date,
   current_date AS load_date
 
 FROM malaria_microscopy_results

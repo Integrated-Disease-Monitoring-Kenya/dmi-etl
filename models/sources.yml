@@ -68,3 +68,25 @@ sources:
     schema: central_raw_ears
     tables:
       - name: veoc_covid_linelist_results
+  - name: central_raw_palladium
+    database: SHIELD
+    schema: central_raw_palladium
+    tables:
+      - name: subject
+        description: This table contains raw data for passive surveillance subject
+      - name: complaint
+        description: This table contains raw data for passive surveillance complaint
+      - name: illness_case
+        description: This table contains raw data for passive surveillance illness case
+      - name: diagnosis
+        description: This table contains raw data for passive surveillance diagnosis
+      - name: flagged_condition
+        description: This table contains raw data for passive surveillance flagged condition
+      - name: lab
+        description: This table contains raw data for passive surveillance lab
+      - name: vital_sign
+        description: This table contains raw data for passive surveillance vital sign
+      - name: risk_factor
+        description: This table contains raw data for passive surveillance risk factor
+      - name: vaccination
+        description: This table contains raw data for passive surveillance vaccination

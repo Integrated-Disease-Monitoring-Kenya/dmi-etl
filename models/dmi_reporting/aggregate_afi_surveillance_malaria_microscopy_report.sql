@@ -10,7 +10,7 @@ date.month,
 finalresult.lab_result as final_resultresult,
 read1result.lab_result as read1_result,
 read2result.lab_result as read2_result,
-
+malaria_microscopy_results.screening_date,
 malaria_microscopy_results.enrolled,
 
 cast(current_date as date) as load_date
