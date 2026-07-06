@@ -39,7 +39,10 @@ with base as (
         end as age,
 
         -- Date Dimension
-        d.date_key
+        d.date_key,
+        d.date,
+        d.year,
+        d.month
 
     from {{ ref('stg_emr_illnes_case') }} c
 

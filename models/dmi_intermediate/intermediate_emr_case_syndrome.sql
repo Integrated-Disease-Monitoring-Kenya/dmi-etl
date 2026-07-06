@@ -7,6 +7,9 @@ select
     c.epi_week_key,
     c.week_number,
     c.epi_year,
+    c.year,
+    c.month,
+    c.date,
 
     c.mfl_code,
     c.facility_key,

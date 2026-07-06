@@ -6,6 +6,9 @@ select
     epi_week_key,
     week_number,
     epi_year,
+    year,
+    month,
+    date,
 
     facility_key,
     facility_name,

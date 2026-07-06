@@ -4,6 +4,9 @@ with weekly as (
         fs.epi_week_key,
         fs.epi_year,
         fs.week_number,
+        fs.year,
+        fs.month,
+        fs.date,
 
         fs.facility_key,
         fs.facility_name,
@@ -13,7 +16,7 @@ with weekly as (
         fs.condition_id,
         fs.syndrome_name,
 
-        count(*) as flagged_cases,
+        count(distinct fs.case_unique_id) as flagged_cases,
         count(distinct fs.patient_hash) as distinct_patients
 
     from {{ ref('fct_emr_flagged_syndrome') }} fs
@@ -21,8 +24,12 @@ with weekly as (
     where fs.epi_week_key is not null
       and fs.facility_key is not null
       and fs.syndrome_name is not null
+      and fs.case_unique_id is not null
 
     group by
+        fs.year,
+        fs.month,
+        fs.date,
         fs.epi_week_key,
         fs.epi_year,
         fs.week_number,
